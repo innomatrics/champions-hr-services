@@ -1,0 +1,71 @@
+/* .navbar-nav .nav-link {
+    transition: color 0.3s ease;
+    color: #000; /* Normal color *
+  } */
+  
+  /* .navbar-nav .nav-link:hover {
+    color: #0d6efd !important; /* Bootstrap primary blue *
+  } */
+  
+  /* .dropdown-menu .dropdown-item:hover {
+    background-color: #0d6efd;
+    color: white;
+  }
+   */
+
+   .custom-hover-red:hover {
+    color: #dc3545  !important;
+  }
+  .footer-link {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-link::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: #ff4c4c;
+    transition: width 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: #ff4c4c;
+  }
+  
+  .footer-link:hover::after {
+    width: 100%;
+  }
+  /* Add to App.css or your global styles */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 70%;
+  text-align: center;
+  font-size: 30px;
+  padding: 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  text-decoration: none;
+}
+
+.whatsapp-icon {
+  font-size: 30px;
+}
+
+  

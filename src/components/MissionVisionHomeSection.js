@@ -22,8 +22,7 @@ const MissionVisionHomeSection = () => {
                   <div>
                     <h4 className="fw-bold">Mission</h4>
                     <p>
-                      To serve the right business solutions in the most ethical, highly qualitative and superior manner that integrate People, Process and emerging Technology with the least Turn Around Time to achieve the business goals cost-effectively.
-                    </p>
+                    To empower organizations by connecting them with the right people and the right practices, creating workplaces that are compliant, capable, and future-ready.                    </p>
                   </div>
                 </div>
                 <hr />
@@ -32,8 +31,7 @@ const MissionVisionHomeSection = () => {
                   <div>
                     <h4 className="fw-bold">Vision</h4>
                     <p>
-                      To be the most recognized “Perfect”, “Reliable” & “Professional” human resource partner across the globe.
-                    </p>
+                    Our vision is to be a trusted partner in workforce transformation, empowering businesses to thrive through strategic staffing, innovative solutions, and a human-centric approach. We are driven by integrity in every action, transparency in communication, and excellence in all that we do.                    </p>
                   </div>
                 </div>
               </div>

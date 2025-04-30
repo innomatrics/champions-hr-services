@@ -20,7 +20,7 @@ const servicesData = [
   {
     icon: <FaUsersCog size={40} />,
     title: "Professional Staffing and Recruitment",
-    desc: "Finding the right person for the right role is crucial to your organization's performance.",
+    // desc: "Finding the right talent for the right role is essential to driving your organization’s success.",
     // path: "/services/professional-staffing"
   },
   // {
@@ -31,8 +31,8 @@ const servicesData = [
   // },
   {
     icon: <FaMoneyCheckAlt size={40} />,
-    title: "Compliance Services",
-    desc: "Taking care of your employees’ happiness is another way of saying we’ve got payroll covered.",
+    title: "HR Compliance Services",
+    // desc: "Supporting your employees’ well-being starts with ensuring payroll and compliance are handled seamlessly.",
     // path: "/services/payroll-compliance"
   },
   // {

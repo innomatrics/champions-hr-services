@@ -11,32 +11,32 @@ const features = [
   {
     icon: highJoin,
     title: "High Joining Ratio",
-    description: "85% Joining Ratio – maintained consistently across customers",
+    description: "We consistently maintain an impressive 85% joining ratio across our diverse client portfolio.",
   },
   {
     icon: growth,
-    title: "Superb Growth",
-    description: "81% Average – YoY Growth since 2006",
+    title: "Exceptional Growth",
+    description: "Our sustained growth reflects our ability to scale efficiently while consistently delivering exceptional value.",
   },
   {
     icon: opportunity,
-    title: "Equal Opportunity",
-    description: "70% Women Workforce – mentored through D&I Program",
+    title: " Commitment to Equality",
+    description: "70% of our workforce is made up of women, empowered through structured Diversity & Inclusion programs and mentorship initiatives.",
   },
   {
     icon: success,
-    title: "High Success Ratio",
-    description: "1000+ consultants – placed in their dream jobs",
+    title: "Proven Success",
+    description: "We’ve successfully placed over 1,000 professionals in roles that align with their skills and career aspirations.",
   },
   {
     icon: responsibilities,
-    title: "Responsibilities",
-    description: "CSR – Employability as our theme",
+    title: "Reliable Compliance Services",
+    description: "We provide accurate and up-to-date compliance services, tailored to the latest regulatory changes and client needs.",
   },
   {
     icon: onboarding,
     title: "Specialized Onboarding",
-    description: "Specialized Recruiters – DEDICATED onboarding",
+    description: "Our dedicated recruitment experts ensure a seamless, personalized onboarding experience for every hire.",
   },
 ];
 

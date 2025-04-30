@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useJobContext } from "./context/JobContext"; // ✅ Import context
+import { useJobContext } from "./context/JobContext";
 
 const Jobs = () => {
-  const { jobs } = useJobContext(); // ✅ Use shared job list from context
+  const { jobs } = useJobContext();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
@@ -11,10 +11,11 @@ const Jobs = () => {
     experience: "",
   });
   const [filteredJobs, setFilteredJobs] = useState([]);
+  const [selectedJob, setSelectedJob] = useState(null); // for modal
 
   useEffect(() => {
     filterJobs();
-  }, [searchTerm, filters, jobs]); // ✅ Re-run when jobs update
+  }, [searchTerm, filters, jobs]);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -22,10 +23,7 @@ const Jobs = () => {
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
-    setFilters((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
   const filterJobs = () => {
@@ -34,10 +32,8 @@ const Jobs = () => {
       const matchesCategory = filters.category ? job.category === filters.category : true;
       const matchesLocation = filters.location ? job.jobLocation.includes(filters.location) : true;
       const matchesExperience = filters.experience ? job.experience === filters.experience : true;
-
       return matchesSearch && matchesCategory && matchesLocation && matchesExperience;
     });
-
     setFilteredJobs(filtered);
   };
 
@@ -45,115 +41,112 @@ const Jobs = () => {
     <div className="container py-5">
       <h2 className="text-center mb-4 fw-bold text-danger">Job Openings</h2>
 
-      {/* Search and Filters */}
-      <div className="row mb-4">
+      <div className="row">
+        {/* Left Column - Filters and Jobs */}
+        <div className="col-md-8">
+          {/* Filters */}
+          <div className="row mb-4">
+            {/* Filters can be added here if needed */}
+          </div>
+
+          {/* Job Listings */}
+          {filteredJobs.length > 0 ? (
+            filteredJobs.map((job) => (
+              <div key={job.id} className="card mb-4">
+                <div className="card-body">
+                  <h5 className="card-title"><strong>Position:</strong> {job.position}</h5>
+                  <p className="card-text">
+                    <p><strong>Exp:</strong> {job.experience},{" "}</p>
+                    <p><strong>Job Location:</strong> {job.jobLocation},{" "}</p>
+                    {job.driveLocation && <><strong>#Drive Location:</strong> {job.driveLocation},{" "}</>}
+                    <p><strong>Education:</strong> {job.education}</p>
+                  </p>
+                  <p className="mb-1 text-muted"><i className="bi bi-briefcase"></i> {job.category}</p>
+                  <p className="mb-1 text-muted"><i className="bi bi-geo-alt"></i> {job.jobLocation}</p>
+
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLScRvVyo6og6ntYbH9Y12OaxBD1lCZcq_iv7TFRNpW3BbTralg/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline-danger btn-sm mt-2"
+                  >
+                    More Details
+                  </a>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-center text-muted">No jobs found matching your criteria.</div>
+          )}
+        </div>
+
+        {/* Right Column - Recent Jobs */}
         <div className="col-md-4">
-          <input
-            type="text"
-            className="form-control border-danger"
-            placeholder="Search job position..."
-            value={searchTerm}
-            onChange={handleSearch}
-          />
-        </div>
-
-        <div className="col-md-2">
-          <select
-            className="form-select border-danger"
-            name="category"
-            value={filters.category}
-            onChange={handleFilterChange}
-          >
-            <option value="">All Categories</option>
-            <option value="HR">HR</option>
-            <option value="Hospitals">Hospitals            </option>
-            <option value="Manufacturing & Engineering ">Manufacturing & Engineering            </option>
-            <option value="Retail">Retail</option>
-            <option value="Pharma">Pharma</option>
-            <option value="E-commerce"> E-commerce
-            </option>
-            <option value="Jewellery">Jewellery</option>
-            <option value="Healthcare & Pharmaceuticals">Healthcare & Pharmaceuticals</option>
-            <option value="Preschools & Educational Institutions">Preschools & Educational Institutions</option>
-            <option value="Medical Colleges">Medical Colleges
-            </option>
-            <option value="BPO & KPO (Voice, Non-Voice, and Backend Operations)">BPO & KPO (Voice, Non-Voice, and Backend Operations)</option>
-            <option value="Logistics & Supply Chain">Logistics & Supply Chain
-            </option>
-            <option value="IBFSI & FinTech">BFSI & FinTech</option> 
-          </select>
-        </div>
-
-        <div className="col-md-2">
-          <select
-            className="form-select border-danger"
-            name="location"
-            value={filters.location}
-            onChange={handleFilterChange}
-          >
-            <option value="">All STATES</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Kerala">Kerala</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="Bihar">Bihar</option>
-          </select>
-        </div>
-
-        <div className="col-md-2">
-          <select
-            className="form-select border-danger"
-            name="experience"
-            value={filters.experience}
-            onChange={handleFilterChange}
-          >
-            <option value="">All Experience</option>
-            
-            <option value="0 to 6 Years">0 to 6 Years</option>
-            <option value="6 to 12 Years">6 to 12 Years</option>
-            <option value=" 12+ Years"> 12+ Years</option>
-          </select>
+          <div className="card border-danger mb-4">
+            <div className="card-header bg-danger text-white fw-bold">
+              Recent Jobs
+            </div>
+            <ul className="list-group list-group-flush">
+              {[...jobs].slice(-5).reverse().map((job) => (
+                <li
+                  key={job.id}
+                  className="list-group-item list-group-item-action"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setSelectedJob(job)}
+                >
+                  <h6 className="mb-1">{job.position}</h6>
+                  <small className="text-muted">{job.jobLocation}</small>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 
-      {/* Job Listings */}
-      {filteredJobs.length > 0 ? (
-        filteredJobs.map((job) => (
-          <div key={job.id} className="card mb-4">
-            <div className="card-body">
-              <h5 className="card-title">
-                <strong>Position:</strong> {job.position}
-              </h5>
-              <p className="card-text">
-                <strong>#Exp:</strong> {job.experience},{" "}
-                <strong>#Job Location:</strong> {job.jobLocation},{" "}
-                {job.driveLocation && (
-                  <>
-                    <strong>#Drive Location:</strong> {job.driveLocation},{" "}
-                  </>
+      {/* Job Detail Modal */}
+      {selectedJob && (
+        <div className="modal show fade d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+          <div className="modal-dialog">
+            <div className="modal-content border-danger">
+              <div className="modal-header bg-danger text-white">
+                <h5 className="modal-title">{selectedJob.position}</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setSelectedJob(null)}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <p><strong>Experience:</strong> {selectedJob.experience}</p>
+                <p><strong>Location:</strong> {selectedJob.jobLocation}</p>
+                {selectedJob.driveLocation && (
+                  <p><strong>Drive Location:</strong> {selectedJob.driveLocation}</p>
                 )}
-                <strong>#Education:</strong> {job.education}
-              </p>
-              <p className="mb-1 text-muted">
-                <i className="bi bi-briefcase"></i> {job.category}
-              </p>
-              <p className="mb-1 text-muted">
-                <i className="bi bi-geo-alt"></i> {job.jobLocation}
-              </p>
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLScRvVyo6og6ntYbH9Y12OaxBD1lCZcq_iv7TFRNpW3BbTralg/viewform"
-                className="text-danger"
-              >
-                More Details →
-              </a>
+                <p><strong>Education:</strong> {selectedJob.education}</p>
+                <p><strong>Category:</strong> {selectedJob.category}</p>
+              </div>
+              <div className="modal-footer">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScRvVyo6og6ntYbH9Y12OaxBD1lCZcq_iv7TFRNpW3BbTralg/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline-danger"
+                >
+                  Apply / More Details
+                </a>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setSelectedJob(null)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
-        ))
-      ) : (
-        <div className="text-center text-muted">
-          No jobs found matching your criteria.
         </div>
       )}
+
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo2.jpg';
+import logo from '../assets/Logo4.jpg';
 
 function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -16,7 +16,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar sticky-top shadow-sm bg-white">
+    <nav className="navbar navbar-expand-lg navbar sticky-top  bg-white">
       <div className="container">
         {/* Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">

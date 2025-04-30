@@ -8,14 +8,15 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="col-md-3 mb-4">
-            <h5 className="fw-bold">Contact Info</h5>
+            <h5 className="fw-bold">Contact Information </h5>
             <p>
-              Champions HR Services a global provider of, Recruitment Solutions, and HR Staffing & Compliance Services in India.
+            Champions HR Services is a leading provider of recruitment solutions, HR staffing, and HR compliance services across India. Reach out to us for tailored solutions that meet your recruitment and HR compliance needs.
             </p>
             <p>
               <i className="fas fa-map-marker-alt me-2"></i>
               <strong>Head Office Address:</strong><br />
-              1st main,7th cross,Shree kanteshwar nagar mahalakshimi layout-560096,LandMark behind Ashok heights
+              1st Main, 7th Cross, Shree Kanteshwar Nagar, Mahalakshmipura Layout, Bengaluru - 560096
+Landmark: Behind Ashok Heights
             </p>
             <p>
               <i className="fas fa-phone me-2"></i> Phone: +91-9632492563<br />
@@ -70,11 +71,11 @@ const Footer = () => {
             </ul>
             <h6 className="fw-bold mt-3">Follow Us</h6>
             <div>
-              <a href="#" className="btn btn-outline-light btn-sm me-1"><i className="fab fa-twitter"></i></a>
-              <a href="#" className="btn btn-outline-light btn-sm me-1"><i className="fab fa-facebook-f"></i></a>
-              <a href="#" className="btn btn-outline-light btn-sm me-1"><i className="fab fa-instagram"></i></a>
-              <a href="#" className="btn btn-outline-light btn-sm me-1"><i className="fab fa-linkedin-in"></i></a>
-              <a href="#" className="btn btn-outline-light btn-sm"><i className="fab fa-youtube"></i></a>
+              <a href="https://x.com/Basavaraj_189?t=qqaD-vES3Mmg7iR7MPl_Ug&s=09" className="btn btn-outline-light btn-sm me-1"><i className="fab fa-twitter"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=61575737247861" className="btn btn-outline-light btn-sm me-1"><i className="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/championhrservices?igsh=dnZxZzJybjExMnRn" className="btn btn-outline-light btn-sm me-1"><i className="fab fa-instagram"></i></a>
+              <a href="http://www.linkedin.com/in/champion-hr-services" className="btn btn-outline-light btn-sm me-1"><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://youtube.com/@basavaraj-09?si=o-AU0b1ELjRsRGHM" className="btn btn-outline-light btn-sm"><i className="fab fa-youtube"></i></a>
             </div>
           </div>
 

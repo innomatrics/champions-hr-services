@@ -18,8 +18,7 @@ function MissionVisionValues() {
               <img src={missionIcon} alt="Mission" width="80" className="mb-3" />
               <h4 className="text-danger fw-semibold mb-3">Our Mission</h4>
               <p className="text-muted">
-                To empower organizations with the right people and the right practices,
-                creating workplaces that are compliant, capable, and future-ready.
+              To empower organizations by connecting them with the right people and the right practices, creating workplaces that are compliant, capable, and future-ready..
               </p>
 
               {/* Add the mission image below */}
@@ -34,15 +33,13 @@ function MissionVisionValues() {
               <img src={valuesIcon} alt="Vision and Values" width="80" className="mb-3" />
               <h4 className="text-danger fw-semibold mb-3">Our Vision & Values</h4>
               <p className="text-muted text-start">
-                Our vision is to be a trusted partner in workforce transformation—helping businesses thrive through strategic staffing,
-                innovative solutions, and a human-centric approach. We believe in the power of <strong>Integrity in Every Action</strong>,
-                transparency, and excellence in all we do. Our values focus on building lasting relationships by understanding client needs
-                and aligning our efforts with their goals.
+              Our vision is to be a trusted partner in workforce transformation, empowering businesses to thrive through strategic staffing, innovative solutions, and a human-centric approach. We are driven by integrity in every action, transparency in communication, and excellence in all that we do.
+              <p className="text-muted text-start">
+               Our core values are centered around building lasting relationships by deeply understanding client needs and aligning our efforts with their goals. We are committed to delivering personalized solutions that create measurable impact—empowering talent, optimizing operations, and driving sustainable growth.
+              </p>
               </p>
               <p className="text-muted text-start">
-                We're committed to <strong>Excellence</strong> and delivering personalized solutions that create measurable impact—empowering talent,
-                optimizing operations, and driving growth. With a <strong>Personalized Approach</strong> and a focus on
-                <strong> Long-Term Partnerships</strong>, we aim to deliver value through professionalism, adaptability, and a relentless pursuit of quality.
+              With a focus on long-term partnerships and a personalized approach, we aim to deliver exceptional value through professionalism, adaptability, and a relentless 
               </p>
             </div>
           </div>

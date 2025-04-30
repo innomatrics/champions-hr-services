@@ -62,7 +62,7 @@ function ContactUs() {
                 {/* Contact Form in a separate row */}
                 <div className="row mt-5">
                     <div className="col-md-10 mx-auto">
-                    <h2 className="text-danger mb-3 text-center fw-bold">Get in Touch</h2>
+                        <h2 className="text-danger mb-3 text-center fw-bold">Get in Touch</h2>
                         <form className="p-4 border rounded shadow-sm bg-white">
                             <div className="row mb-3">
                                 <div className="col-md-6">
@@ -86,9 +86,9 @@ function ContactUs() {
                                     <select className="form-select">
                                         <option>Choose your option</option>
                                         {/* <option>I am looking for IT Staffing</option> */}
-                                        <option>I am looking for a Job</option>
-                                        <option>I am looking for Services</option>
-                                        <option>I am an Ex/Current Employee</option>
+                                        <option>Looking for a Job</option>
+                                        <option>Looking for Staffing Servicess</option>
+                                        <option>Looking for HR Compliance Services</option>
                                     </select>
                                 </div>
                                 <div className="col-md-6 mt-3 mt-md-0">
@@ -123,7 +123,7 @@ function ContactUs() {
                         <h4 className="text-danger mb-3">Our Location</h4>
                         <iframe
                             title="Google Map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160986357!2d72.74109833686717!3d19.082197838088904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63abf012345%3A0xabc!2sYour+Company+Name!5e0!3m2!1sen!2sin!4v1234567890"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248858.9742794366!2d77.29763248671873!3d12.944860399999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae158e6c2d3f31%3A0x2d7790b715ec6cc0!2sASHOKA%20HEIGHTS!5e0!3m2!1sen!2sin!4v1745931237182!5m2!1sen!2sin"
                             width="100%"
                             height="300"
                             style={{ border: 0 }}

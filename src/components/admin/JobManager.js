@@ -26,7 +26,9 @@ const JobManager = () => {
           <div className="card-body">
             <h5>{job.position}</h5>
             <p>{job.experience} | {job.jobLocation}</p>
-            <button className="btn btn-danger btn-sm me-2" onClick={() => handleDelete(job.id)}>
+
+            {/* Delete and Edit Buttons */}
+            <button className="btn btn-danger btn-sm me-2" onClick={() => handleDelete(job._id)}>
               Delete
             </button>
             <button
@@ -35,6 +37,18 @@ const JobManager = () => {
             >
               Edit
             </button>
+
+            {/* More Details Button */}
+            {job.detailsLink &&  (
+              <a
+                href={job.detailsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-info btn-sm mt-2"
+              >
+                More Details
+              </a>
+            )}
           </div>
         </div>
       ))}

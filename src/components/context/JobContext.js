@@ -6,27 +6,51 @@ const JobContext = createContext();
 export const JobProvider = ({ children }) => {
   const [jobs, setJobs] = useState([]);
 
-  // Replace with your backend URL
-  const API = "http://localhost:5000/api/jobs";
+  const API = "https://champions-hr-services-5.onrender.com/api/jobs";
 
   const fetchJobs = async () => {
-    const res = await axios.get(API);
-    setJobs(res.data);
+    try {
+      const res = await axios.get(API);
+      setJobs(res.data);
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+      //  Handle error (e.g., set an error state, display a message)
+    }
   };
 
-  const addJob = async (job) => {
-    const res = await axios.post(API, job);
-    setJobs((prev) => [...prev, res.data]);
+  const addJob = async (jobData) => {
+    console.log("Sending job to backend:", jobData);
+    try {
+      const res = await axios.post(API, jobData);
+      console.log("Job added response:", res.data);
+      setJobs((prev) => [...prev, res.data]);
+    } catch (error) {
+      console.error("Error adding job:", error);
+       // Handle error
+    }
   };
 
-  const updateJob = async (id, updatedJob) => {
-    const res = await axios.put(`${API}/${id}`, updatedJob);
-    setJobs((prev) => prev.map((job) => (job._id === id ? res.data : job)));
+  const updateJob = async (updatedJob) => {
+    try {
+      const res = await axios.put(`${API}/${updatedJob.id}`, updatedJob); // Send the whole updatedJob
+      console.log("Updated job response:", res.data);
+      setJobs((prev) =>
+        prev.map((job) => (job._id === updatedJob.id ? res.data : job))
+      );
+    } catch (error) {
+      console.error("Error updating job:", error);
+      // Handle error
+    }
   };
 
   const deleteJob = async (id) => {
-    await axios.delete(`${API}/${id}`);
-    setJobs((prev) => prev.filter((job) => job._id !== id));
+    try {
+      await axios.delete(`${API}/${id}`);
+      setJobs((prev) => prev.filter((job) => job._id !== id));
+    } catch (error) {
+       console.error("Error deleting job:", error);
+       // Handle error
+    }
   };
 
   useEffect(() => {

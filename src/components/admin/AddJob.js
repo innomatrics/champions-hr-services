@@ -17,6 +17,7 @@ const AddJob = () => {
     jobLocation: "",
     education: "",
     category: "",
+    detailsLink: "", // ✅ New field for link
   });
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const AddJob = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form Data:", formData);// Add this line to inspect the form data
     if (isEdit) {
       updateJob({ ...formData, id: Number(id) });
     } else {
@@ -44,41 +46,12 @@ const AddJob = () => {
     <div className="container mt-4">
       <h3 className="text-danger">{isEdit ? "Edit Job" : "Add Job"}</h3>
       <form onSubmit={handleSubmit}>
-        <input
-          className="form-control mb-2"
-          name="position"
-          placeholder="Position"
-          value={formData.position}
-          onChange={handleChange}
-        />
-        <input
-          className="form-control mb-2"
-          name="experience"
-          placeholder="Experience"
-          value={formData.experience}
-          onChange={handleChange}
-        />
-        <input
-          className="form-control mb-2"
-          name="jobLocation"
-          placeholder="Job Location"
-          value={formData.jobLocation}
-          onChange={handleChange}
-        />
-        <input
-          className="form-control mb-2"
-          name="education"
-          placeholder="Education"
-          value={formData.education}
-          onChange={handleChange}
-        />
-        <input
-          className="form-control mb-3"
-          name="category"
-          placeholder="Category"
-          value={formData.category}
-          onChange={handleChange}
-        />
+        <input className="form-control mb-2" name="position" placeholder="Position" value={formData.position} onChange={handleChange} />
+        <input className="form-control mb-2" name="experience" placeholder="Experience" value={formData.experience} onChange={handleChange} />
+        <input className="form-control mb-2" name="jobLocation" placeholder="Job Location" value={formData.jobLocation} onChange={handleChange} />
+        <input className="form-control mb-2" name="education" placeholder="Education" value={formData.education} onChange={handleChange} />
+        <input className="form-control mb-2" name="category" placeholder="Category" value={formData.category} onChange={handleChange} />
+        <input className="form-control mb-3" name="detailsLink" placeholder="Details Link"value={formData.detailsLink} onChange={handleChange} />
         <button className="btn btn-primary">{isEdit ? "Update Job" : "Add Job"}</button>
       </form>
     </div>

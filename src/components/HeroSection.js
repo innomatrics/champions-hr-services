@@ -55,7 +55,7 @@ function HeroSection() {
                       2000,
                       
                       
-                      'Compliance Services',
+                      'HR Compliance Services',
                       2000,
                     ]}
                     wrapper="span"
@@ -67,7 +67,16 @@ function HeroSection() {
             </h1>
 
             <p className="text-muted">
-  Champions HR Services is one of India’s leading <strong>staffing and recruitment consultancies</strong>, offering <strong>full-time, one-time placements, and bulk hiring solutions</strong> across a wide range of industries. we are committed to delivering excellence through quality processes, strict compliance, and a client-centric approach.
+  {/* Champions HR Services is one of India’s leading <strong>staffing and recruitment consultancies</strong>, 
+  offering <strong>full-time, one-time placements, and bulk hiring solutions</strong>
+   across a wide range of industries. we are committed to delivering excellence through quality processes,
+    strict compliance, and a client-centric approach. */}
+
+Champions HR Services is one of India’s leading <strong>staffing and recruitment consultancies</strong>,
+ providing <strong> full-time placements, one-time hiring solutions, 
+ and bulk recruitment</strong> services across diverse industries. 
+ We are committed to delivering excellence through robust quality processes, strict compliance, 
+and a client-centric approach.
 </p>
 
 
@@ -103,9 +112,11 @@ function HeroSection() {
                   >
                     <option value="Choose your option">Choose your option</option>
                     {/* <option value="I am looking for IT Staffing">I am looking for IT Staffing</option> */}
-                    <option value="I am looking for a Job">I am looking for a Job</option>
-                    <option value="I am looking for Services">I am looking for Services</option>
-                    <option value="I am an Ex/Current Employee">I am an Ex/Current Employee</option>
+                    <option value="looking for a Job">Looking for a Job
+                    </option>
+                    <option value=" looking for Services">Looking for Staffing Services
+                    </option>
+                    <option value="Looking for HR Compliance Services">Looking for HR Compliance Services</option>
                   </select>
                 </div>
                 <div className="col-6">

@@ -27,12 +27,13 @@ import MultiStepForm from './components/MultiStepForm';
 import EmployerForm from './components/EmployerForm';
 import Jobs from './components/Jobs';
 import WhatsAppFloatingIcon from './components/WhatsAppFloatingIcon';
-
+import IenguriPopupForm from './components/IenguriPopupForm';
 import JobManager from './components/admin/JobManager';
 import AddJob from './components/admin/AddJob';
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/admin/Login";
-
+import RecentJobToasts from "./components/RecentJobToasts"
+import FreePlacementToast from "./components/FreePlacementToast"
 
 function AppContent() {
   const location = useLocation();
@@ -42,6 +43,7 @@ function AppContent() {
     <>
       <Topbar />
       <Navbar />
+      <FreePlacementToast/>
 
       {isHomePage && (
         <>
@@ -49,7 +51,7 @@ function AppContent() {
           <StaffingIntro />
           <MissionVisionHomeSection />
           <Services />
-          <MultiStepForm />
+          {/* <MultiStepForm /> */}
           <CoreValuesHomeSection />
           {/* <DeliverablesSection /> */}
           <WhyChooseUs />
@@ -88,7 +90,10 @@ function AppContent() {
       </Routes>
        
       <Footer />
+      <RecentJobToasts />
+      <IenguriPopupForm />
       <WhatsAppFloatingIcon />
+      
     </>
   );
 }

@@ -4,35 +4,76 @@ import heroImg from '../assets/hero-img.png';
 import { TypeAnimation } from 'react-type-animation';
 
 function HeroSection() {
-  // State to manage the current step of the form
   const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    option: '',
+    contact: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // States for form data
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [option, setOption] = useState('');
-  const [contact, setContact] = useState('');
-  const [message, setMessage] = useState('');
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', { name, email, option, contact, message });
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  // Handle next step
   const handleNext = () => {
     if (step === 1) {
-      setStep(2); // Move to step 2 (message form)
-    } else {
-      handleSubmit(); // Submit the form when on the last step
+      setStep(2);
     }
   };
 
-  // Handle previous step
   const handlePrevious = () => {
     if (step === 2) {
-      setStep(1); // Go back to step 1 (basic info form)
+      setStep(1);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+  
+    try {
+      const response = await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString()
+        }),
+      });
+  
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.message || `HTTP error! status: ${response.status}`);
+      }
+  
+      alert('Message sent successfully!');
+      setStep(1);
+      setFormData({
+        name: '',
+        email: '',
+        option: '',
+        contact: '',
+        message: ''
+      });
+  
+    } catch (error) {
+      console.error('Error details:', {
+        message: error.message,
+        formData,
+        error
+      });
+      alert(`Error: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -40,7 +81,6 @@ function HeroSection() {
     <section className="hero-section py-5">
       <div className="container">
         <div className="row align-items-center">
-          {/* Left Content */}
           <div className="col-md-6">
             <h1>
               <strong>
@@ -48,13 +88,10 @@ function HeroSection() {
                 <span className="text-danger">
                   <TypeAnimation
                     sequence={[
-                      
                       'Staffing Company',
                       2000,
                       'Recruitment Agency',
                       2000,
-                      
-                      
                       'HR Compliance Services',
                       2000,
                     ]}
@@ -67,111 +104,113 @@ function HeroSection() {
             </h1>
 
             <p className="text-muted">
-  {/* Champions HR Services is one of India’s leading <strong>staffing and recruitment consultancies</strong>, 
-  offering <strong>full-time, one-time placements, and bulk hiring solutions</strong>
-   across a wide range of industries. we are committed to delivering excellence through quality processes,
-    strict compliance, and a client-centric approach. */}
+              Champions HR Services is one of India’s leading <strong>staffing and recruitment consultancies</strong>,
+              providing <strong>full-time placements, one-time hiring solutions, and bulk recruitment</strong> services
+              across diverse industries. We are committed to delivering excellence through robust quality processes,
+              strict HR compliance, and a client-centric approach.
+            </p>
 
-Champions HR Services is one of India’s leading <strong>staffing and recruitment consultancies</strong>,
- providing <strong> full-time placements, one-time hiring solutions, 
- and bulk recruitment</strong> services across diverse industries. 
- We are committed to delivering excellence through robust quality processes, strict compliance, 
-and a client-centric approach.
-</p>
-
-
-            {/* Step 1: Basic Info Form */}
             {step === 1 && (
               <form className="row g-2">
                 <div className="col-6">
                   <input
                     type="text"
+                    name="name"
                     placeholder="Name"
                     className="form-control border-danger"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={formData.name}
+                    onChange={handleInputChange}
                     required
                   />
                 </div>
                 <div className="col-6">
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
                     className="form-control border-danger"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
                   />
                 </div>
                 <div className="col-6">
                   <select
                     className="form-select border-danger"
-                    value={option}
-                    onChange={(e) => setOption(e.target.value)}
+                    name="option"
+                    value={formData.option}
+                    onChange={handleInputChange}
                     required
                   >
-                    <option value="Choose your option">Choose your option</option>
-                    {/* <option value="I am looking for IT Staffing">I am looking for IT Staffing</option> */}
-                    <option value="looking for a Job">Looking for a Job
-                    </option>
-                    <option value=" looking for Services">Looking for Staffing Services
-                    </option>
-                    <option value="Looking for HR Compliance Services">Looking for HR Compliance Services</option>
+                    <option value="">Choose your option</option>
+                    <option value="Looking for a Job">Looking for a Job</option>
+                    <option value="Looking for Staffing Services">Looking for Staffing Services</option>
+                    <option value="Looking for HR Compliance Services">Looking for HR Compliance Services</option>
                   </select>
                 </div>
                 <div className="col-6">
                   <input
                     type="tel"
+                    name="contact"
                     placeholder="Contact No."
                     className="form-control border-danger"
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}
+                    value={formData.contact}
+                    onChange={handleInputChange}
                     required
                   />
                 </div>
                 <div className="col-12">
-                  <button type="button" onClick={handleNext} className="btn btn-danger w-100">
-                    NEXT &gt;
+                  <button 
+                    type="button" 
+                    onClick={handleNext} 
+                    className="btn btn-danger w-100"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'NEXT >'}
                   </button>
                 </div>
               </form>
             )}
 
-            {/* Step 2: Message Form */}
             {step === 2 && (
               <form className="row g-2" onSubmit={handleSubmit}>
                 <div className="col-12">
                   <textarea
                     className="form-control border-danger"
+                    name="message"
                     placeholder="Message"
                     rows="4"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    value={formData.message}
+                    onChange={handleInputChange}
                     required
                   ></textarea>
                 </div>
-
-                {/* Previous Button (only visible when step === 2) */}
                 <div className="col-6">
-                  <button type="button" onClick={handlePrevious} className="btn btn-danger w-100">
+                  <button 
+                    type="button" 
+                    onClick={handlePrevious} 
+                    className="btn btn-danger w-100"
+                    disabled={isSubmitting}
+                  >
                     &lt; Previous
                   </button>
                 </div>
-
                 <div className="col-6">
-                  <button type="submit" className="btn btn-danger w-100">
-                    Send Message
+                  <button 
+                    type="submit" 
+                    className="btn btn-danger w-100"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </div>
               </form>
             )}
           </div>
 
-          {/* Right Image */}
           <div className="col-md-6 text-center mt-4 mt-md-0">
-            <img src={heroImg} alt="Hero Illustration" className="img-fluid" />
+            <img src={heroImg} alt="HR Services" className="img-fluid" />
           </div>
-
         </div>
       </div>
     </section>
